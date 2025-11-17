@@ -1,0 +1,20 @@
+body[data-theme="light"] {
+  --bg: #ffffff;
+  --card-bg: #ffffff;
+  --text: #222222;
+  --border: #cccccc;
+  --tooltip-bg: #dddddd;
+}
+
+body[data-theme="dark"] {
+  --bg: #000027;
+  --card-bg: #000022;
+  --text: #e4e4e4;
+  --border: #444;
+  --tooltip-bg: #0f0f30;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}

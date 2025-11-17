@@ -1,0 +1,17 @@
+@media (max-width: 1300px) and (min-width: 671px) {
+  .container {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .selectors {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
