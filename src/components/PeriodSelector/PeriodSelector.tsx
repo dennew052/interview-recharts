@@ -1,8 +1,10 @@
 import styles from './PeriodSelector.module.css';
 
+export type PeriodMode = "day" | "week";
+
 interface Props {
-  mode: "day" | "week";
-  setMode: (m: "day" | "week") => void;
+  mode: PeriodMode;
+  setMode: (m: PeriodMode) => void;
 }
 
 export function PeriodSelector({ mode, setMode }: Props) {

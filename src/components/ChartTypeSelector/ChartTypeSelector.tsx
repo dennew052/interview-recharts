@@ -1,12 +1,20 @@
 import styles from "./ChartTypeSelector.module.css";
 
+export type ChartMode =
+  | "line"
+  | "monotone"
+  | "natural"
+  | "step"
+  | "area"
+  | "fat";
+
 interface Props {
-  mode: string;
-  onChange: (m: any) => void;
+  mode: ChartMode;
+  onChange: (m: ChartMode) => void;
 }
 
 export function ChartTypeSelector({ mode, onChange }: Props) {
-  const types = [
+  const types: { id: ChartMode; label: string }[] = [
     { id: "line", label: "Line" },
     { id: "monotone", label: "Smooth" },
     { id: "natural", label: "Natural" },

@@ -1,12 +1,17 @@
 import styles from './VariationSelector.module.css';
 
-interface Props {
-  variations: { id?: number; name: string }[];
-  enabled: Record<string, boolean>;
-  toggle: (id: string | number) => void;
+interface Variation {
+  id?: number;
+  name: string;
 }
 
-export function VariationSelector({variations, enabled, toggle}: Props) {
+interface Props {
+  variations: Variation[];
+  enabled: Record<number, boolean>;
+  toggle: (id: number) => void;
+}
+
+export function VariationSelector({ variations, enabled, toggle }: Props) {
   return (
     <div className={styles.wrapper}>
       {variations.map(v => {
@@ -16,7 +21,7 @@ export function VariationSelector({variations, enabled, toggle}: Props) {
           <label key={id} className={styles.item}>
             <input
               type="checkbox"
-              checked={enabled[id]}
+              checked={!!enabled[id]}
               onChange={() => toggle(id)}
             />
             <span>{v.name}</span>

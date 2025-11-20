@@ -1,22 +1,30 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, type ReactNode } from "react";
 
-type Theme = "light" | "dark";
+export type Theme = "light" | "dark";
 
-export const ThemeContext = createContext<{
+export interface ThemeContextType {
   theme: Theme;
   toggle: () => void;
-}>({
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const ThemeContext = createContext<ThemeContextType>({
   theme: "light",
-  toggle: () => {}
+  toggle: () => {},
 });
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(
-    (localStorage.getItem("theme") as Theme) || "light"
-  );
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export function ThemeProvider({ children }: ThemeProviderProps) {
+  const [theme, setTheme] = useState<Theme>(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme === "dark" ? "dark" : "light";
+  });
 
   const toggle = () => {
-    setTheme(t => (t === "light" ? "dark" : "light"));
+    setTheme((t) => (t === "light" ? "dark" : "light"));
   };
 
   useEffect(() => {

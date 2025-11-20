@@ -1,2 +1,3 @@
-export const calcConversionRate = (conversions: number, visits: number) =>
-    visits ? (conversions / visits) * 100 : 0;
+export const calcConversionRate = (conversions: number, visits: number): number => {
+  return visits ? (conversions / visits) * 100 : 0;
+};

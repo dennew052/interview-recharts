@@ -1,8 +1,14 @@
 import styles from './CustomTooltip.module.css';
 
+interface TooltipPayload {
+  name: string;
+  value: number;
+  color?: string;
+}
+
 interface Props {
   active?: boolean;
-  payload?: any[];
+  payload?: TooltipPayload[];
   label?: string;
 }
 
@@ -39,7 +45,7 @@ export function CustomTooltip({ active, payload, label }: Props) {
   );
 }
 
-function isMaxValue(item: any, payload: any[]) {
+function isMaxValue(item: TooltipPayload, payload: TooltipPayload[]) {
   const max = Math.max(...payload.map(p => p.value));
   return item.value === max;
 }
